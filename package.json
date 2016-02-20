@@ -1,0 +1,29 @@
+{
+  "name": "@learnersguild/lg-auth0-node-jwt-cookie",
+  "version": "0.1.0",
+  "description": "LearnersGuild authentication module for Auth0 in Node.js",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel -d lib/ src/",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no tests!\" && exit 1"
+  },
+  "keywords": [
+    "auth0"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LearnersGuild/lg-auth0-node-jwt-cookie.git"
+  },
+  "author": {
+    "name": "Jeffrey Wescott",
+    "email": "jeffrey@learnersguild.org"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0"
+  }
+}

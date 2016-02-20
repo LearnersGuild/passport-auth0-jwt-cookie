@@ -7,7 +7,7 @@ export function configureAuthRoutes(app, authURL, callbackURL) {
   }))
 
   app.get(callbackURL,
-    passport.authenticate('auth0', {failureRedirect: authURL}),
+    passport.authenticate('auth0', {failureRedirect: '/'}),
     (req, res) => {
       if (!req.user) {
         throw new Error('authentication failed!')

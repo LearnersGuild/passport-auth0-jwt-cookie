@@ -1,4 +1,4 @@
-# lg-auth0-node-jwt-cookie
+# passport-auth0-jwt-cookie
 
 Reusable module for using [passport-auth0][passport-auth0] to handle authentication, API authorization with a JWT token, and storing the token in a secure, HttpOnly cookie.
 

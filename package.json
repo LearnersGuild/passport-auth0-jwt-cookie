@@ -1,6 +1,6 @@
 {
-  "name": "@learnersguild/lg-auth0-node-jwt-cookie",
-  "version": "0.1.1",
+  "name": "@learnersguild/passport-auth0-jwt-cookie",
+  "version": "0.1.2",
   "description": "LearnersGuild authentication module for Auth0 in Node.js",
   "main": "lib/index.js",
   "scripts": {

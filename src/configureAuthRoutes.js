@@ -14,7 +14,6 @@ export function configureAuthRoutes(app, authURL, callbackURL) {
       }
       res.cookie('jwt', req.user.idToken, {secure: process.env.NODE_ENV === 'production', httpOnly: true})
       next()
-      res.redirect('/')
     }
   )
 }

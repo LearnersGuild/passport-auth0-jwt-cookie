@@ -3,12 +3,35 @@ import passport from 'passport'
 import jwt from 'express-jwt'
 import fetch from 'isomorphic-fetch'
 
-export const authMiddleware = passport.authenticate('auth0', {
-  connection: 'google-oauth2',
-  scope: 'openid email',
-})
+import {encrypt, decrypt} from './symmetricCryptoAES'
 
-export const getCallbackMiddleware = failureRedirect => passport.authenticate('auth0', {failureRedirect})
+export const authMiddleware = (req, res) => {
+  // if the app passed-in a place to which we should redirect after the
+  // authentication, we'll use it as part of the OAuth2 'state' parameter
+  const {redirectTo} = req.query
+  let appState = {}
+  if (redirectTo) {
+    appState.redirectTo = redirectTo
+  }
+  appState = JSON.stringify(appState)
+  passport.authenticate('auth0', {
+    connection: 'google-oauth2',
+    scope: 'openid email',
+    state: encrypt(appState),
+  })(req, res)
+}
+
+export const getCallbackMiddleware = failureRedirect => {
+  return (req, res, next) => {
+    // if the app passed-in a place to which we should redirect after the
+    // authentication, we'll use it as part of the OAuth2 'state' parameter
+    const {state} = req.query
+    const appState = JSON.parse(decrypt(state))
+    // set our app state (including redirectTo)
+    req.appState = appState
+    passport.authenticate('auth0', {failureRedirect})(req, res, next)
+  }
+}
 
 export const setCookieMiddleware = (req, res, next) => {
   if (!req.user) {

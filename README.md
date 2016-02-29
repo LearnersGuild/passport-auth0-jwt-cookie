@@ -19,6 +19,10 @@ Be sure you've read the [instructions for contributing](./CONTRIBUTING.md).
 
         $ npm test
 
+## Usage
+
+For an example of how to use this module, see [how the IDM service uses it](https://github.com/LearnersGuild/idm/blob/master/server/configureAuth.js)
+
 
 ## License
 
